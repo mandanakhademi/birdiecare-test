@@ -27,6 +27,17 @@ class DatabaseService {
         }
     }
 
+    public async getVisits(carRecipientId: string, fromDate: string, toDate: string) {
+        await this.openConnection();
+
+        if (this.connection) {
+            const result = this.connection.query("select * from events where care_recipient_id='" +
+                carRecipientId + "' and timestamp between '" + fromDate + "' and '" + toDate + "' and visit_id is not null order by visit_id,caregiver_id, timestamp");
+            this.closeConnection();
+            return result;
+        }
+    }
+
     private closeConnection() {
         if (this.connection) {
             this.connection.end();
