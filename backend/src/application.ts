@@ -1,7 +1,6 @@
 import * as bodyParser from "body-parser"
 import * as express from "express";
 import EventController from "./controllers/event-controller";
-import { pingController } from "./controllers/ping";
 import DatabaseService from "./services/database-service";
 
 
@@ -16,7 +15,5 @@ const eventController = new EventController(databaseService);
 app.use('/careRecipiets', eventController.getAllCareRecipiets);
 app.use('/visits', eventController.getVisits);
 
-
-app.use(pingController);
 
 export default app;
