@@ -16,6 +16,17 @@ class DatabaseService {
         });
     }
 
+    public async getAllCareRecipiets() {
+        await this.openConnection();
+
+        if (this.connection) {
+            const result = this.connection.query("select care_recipient_id from events group by care_recipient_id");
+
+            this.closeConnection();
+            return result;
+        }
+    }
+
     private closeConnection() {
         if (this.connection) {
             this.connection.end();
