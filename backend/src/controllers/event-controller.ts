@@ -20,7 +20,7 @@ class EventController {
                 caregiver = new Caregiver(element.caregiver_id, new Date(element.timestamp));
                 visit.addCaregiver(caregiver);
             }
-            caregiver.addEvent(element.payload);
+            caregiver.addEvent(JSON.parse(element.payload));
         });
         visits.sort((visit1, visit2) => {
             return visit2.timestamp - visit1.timestamp;
