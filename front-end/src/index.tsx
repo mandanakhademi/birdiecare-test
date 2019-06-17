@@ -7,6 +7,8 @@ import App from "@App/components/app/App";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 
+require('dotenv').config();
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
