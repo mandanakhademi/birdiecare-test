@@ -1,22 +1,20 @@
-import * as React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
-import { RootState } from '@App/store/reducers';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import * as React from "react";
+import { ToastContainer } from 'react-toastify';
+import Visits from "@App/components/visits";
 
-import Title from '@App/components/Title';
-import Logo from '@App/components/Logo';
-import SubTitle from '@App/components/SubTitle';
+import { createGlobalStyle } from "styled-components";
+import { RootState } from "@App/store/reducers";
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
-const LogoUrl = require('../../assets/images/logo-birdie.svg');
+import Logo from "@App/components/Logo";
+import 'react-toastify/dist/ReactToastify.css';
 
-interface AppProps {
+const LogoUrl = require("../../assets/images/logo-birdie.svg");
 
-}
+interface AppProps { }
 
-interface AppState {
-
-}
+interface AppState { }
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -28,14 +26,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const AppContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+const css = `
+.logo {  
+  margin-bottom: 20px
+}`;
 
 class App extends React.Component<AppProps, AppState> {
   public constructor(props: AppProps) {
@@ -46,18 +40,26 @@ class App extends React.Component<AppProps, AppState> {
     return (
       <>
         <GlobalStyle />
-        <AppContainer>
-          <Logo src={LogoUrl} />
-          <Title>Welcome to the birdie test</Title>
-          <SubTitle>Best of luck!</SubTitle>
-        </AppContainer>
+        <style>{css}</style>
+        <ToastContainer />
+        <main className="container">
+          <div className="logo">
+            <Logo src={LogoUrl} />
+          </div>
+
+          <Visits />
+        </main>
+
       </>
     );
   }
 }
 
-const mapStateToProps = (state: RootState, ownProps: object) => {};
+const mapStateToProps = (state: RootState, ownProps: object) => { };
 
-const mapDispatchToProps = (dispatch: Dispatch<RootState>) => {};
+const mapDispatchToProps = (dispatch: Dispatch<RootState>) => { };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
