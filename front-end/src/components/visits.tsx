@@ -1,6 +1,10 @@
 import * as React from "react";
 import ListGroup from "./common/listGroup";
 
+import { Visit } from "@App/models/Visit";
+import Cards from "./cards";
+
+import { getVisits } from "../services/visitService";
 import { getCareRecipients } from "../services/careRecipientService";
 
 import DatePicker from "react-datepicker";
@@ -10,6 +14,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export interface VisitsProps { }
 
 export interface VisitsState {
+  visits: Visit[];
   careRecipients: String[];
   selectedCareRecipient: string;
   startDate: Date;
@@ -23,6 +28,7 @@ class Visits extends React.Component<VisitsProps, VisitsState> {
   constructor(props: VisitsProps) {
     super(props);
     this.state = {
+      visits: [],
       careRecipients: [],
       selectedCareRecipient: "0",
       startDate: new Date(),
@@ -54,6 +60,19 @@ class Visits extends React.Component<VisitsProps, VisitsState> {
 
   handleCareRecipientSelect = (careRecipient: string) => {
     this.setState({ selectedCareRecipient: careRecipient });
+  }
+
+  setSelectedData = async () => {
+    const { selectedCareRecipient, startDate, endDate } = this.state;
+    if (startDate.getTime() === endDate.getTime()) {
+      alert("you should at least select a one day period.");
+      return;
+    }
+    if (selectedCareRecipient !== "0") {
+      const { data } = await getVisits(selectedCareRecipient, startDate, endDate);
+      this.setState({ visits: data });
+
+    }
   }
 
   render() {
@@ -90,10 +109,17 @@ class Visits extends React.Component<VisitsProps, VisitsState> {
             />
           </div>
 
+          <button
+            className="btn btn-primary button"
+            // tslint:disable-next-line:jsx-alignment
+            onClick={this.setSelectedData} >
+            DisplayVisits
+          </button>
         </div>
 
         <div className="col">
-          visits
+          <Cards items={this.state.visits} />
+
         </div>
       </div>
     );
