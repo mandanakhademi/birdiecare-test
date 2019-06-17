@@ -4,9 +4,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "lib": [
-      "esnext"
+      "dom", "es2017"
     ],
-    "target": "es2015",
+    "target": "es2017",
     "outDir": "./lib",
     "removeComments": true,
     "inlineSourceMap": true,
