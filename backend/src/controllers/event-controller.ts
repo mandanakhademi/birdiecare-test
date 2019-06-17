@@ -33,8 +33,8 @@ class EventController {
         EventController.dbService = dbService;
     }
 
-    public getAllCareRecipiets(_: Request, res: Response) {
-        EventController.dbService.getAllCareRecipiets().then(result => {
+    public getAllCareRecipients(_: Request, res: Response) {
+        EventController.dbService.getAllCareRecipients().then(result => {
             const flatResult = new Array();
             result.forEach((element: { care_recipient_id: any; }) => {
                 flatResult.push(element.care_recipient_id);

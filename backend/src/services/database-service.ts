@@ -16,7 +16,7 @@ class DatabaseService {
         });
     }
 
-    public async getAllCareRecipiets() {
+    public async getAllCareRecipients() {
         await this.openConnection();
 
         if (this.connection) {

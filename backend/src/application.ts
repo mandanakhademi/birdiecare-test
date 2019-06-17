@@ -15,7 +15,7 @@ app.use(cors());
 const databaseService = new DatabaseService();
 const eventController = new EventController(databaseService);
 
-app.use('/careRecipiets', eventController.getAllCareRecipiets);
+app.use('/careRecipients', eventController.getAllCareRecipients);
 app.use('/visits', eventController.getVisits);
 
 

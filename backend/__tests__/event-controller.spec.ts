@@ -13,7 +13,7 @@ describe('Event controller', () => {
 
         // Action
         await request(app)
-            .get('/careRecipiets')
+            .get('/careRecipients')
             // Assert
             .expect(200)
             .expect(res => {
