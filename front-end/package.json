@@ -2,6 +2,7 @@
   "name": "front-end",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@types/dateformat": "^3.0.0",
     "axios": "^0.18.1",
@@ -17,10 +18,12 @@
     "react-scripts-redux-ts": "1.2.1",
     "react-toastify": "^4.1.0",
     "redux-saga": "^1.0.2",
+    "serve": "^11.0.1",
     "styled-components": "^4.2.0"
   },
   "scripts": {
-    "start": "react-scripts-ts start",
+    "start": "serve -s build",
+    "ts-start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",

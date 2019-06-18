@@ -34,7 +34,12 @@ const css = `
 class App extends React.Component<AppProps, AppState> {
   public constructor(props: AppProps) {
     super(props);
+    this.connecToServer = this.connecToServer.bind(this);
   }
+
+  connecToServer() { fetch('/'); }
+
+  componentDidMount() { this.connecToServer(); }
 
   public render() {
     return (
