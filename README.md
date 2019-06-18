@@ -11,3 +11,6 @@ A test based on birdiecare database
 * HOST
 * PASSWORD
 * USER
+
+## [Back-end Heroku Server Adress](https://birdie-backend.herokuapp.com/) 
+## [Front-end Heroku Server Adress](https://birdie-frontend.herokuapp.com/)
